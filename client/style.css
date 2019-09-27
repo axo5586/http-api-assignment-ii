@@ -5,6 +5,12 @@ html, body {
   padding: 0;
 }
 
+#container
+{
+  text-align: center;
+  margin: 0 auto;
+}
+
 #top {
   text-align: center;
   margin: 0 auto;
