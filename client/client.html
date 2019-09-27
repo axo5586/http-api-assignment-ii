@@ -109,7 +109,7 @@
     const init = () => {
       const nameForm = document.querySelector('#nameForm');
       const addUser = (e) => sendPost(e, nameForm);
-      nameForm.addEventListener('submit1', addUser);
+      nameForm.addEventListener('submit', addUser);
       const urlField = document.querySelector('#urlField');
       const url = urlField.options[urlField.selectedIndex].value;
       sendAjax(url);
@@ -128,7 +128,7 @@
         <input id="nameField" type="text" name="name" />
         <label for="age">Age: </label>
         <input id="ageField" type="number" name="age" min="0" max="100" step="1"/>
-        <input type="submit1" value="Add User" />
+        <input type="submit" value="Add User" />
       </form>
       <form id="userForm" action="/getUsers" method="get">
         <select id='urlField'>
