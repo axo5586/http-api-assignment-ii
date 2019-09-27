@@ -51,20 +51,15 @@ const handleGet = (request, response, parsedUrl) => {
   }
 };
 
-// handle HTTP requests. In node the HTTP server will automatically
-// send this function request and pre-filled response objects.
-const onRequest = (request, response) => {
+  // handle HTTP requests. In node the HTTP server will automatically
+  // send this function request and pre-filled response objects.
+  const onRequest = (request, response) => {
   // parse the url using the url module
   // This will let us grab any section of the URL by name
   const parsedUrl = url.parse(request.url);
 
   // check if the path name (the /name part of the url) matches
   // any in our url object. If so call that function. If not, default to index.
-  if (urlStruct[parsedUrl.pathname]) {
-    urlStruct[parsedUrl.pathname](request, response);
-  } else {
-    urlStruct.notFound(request, response);
-  }
 
   if (request.method === 'POST') {
     handlePost(request, response, parsedUrl);
