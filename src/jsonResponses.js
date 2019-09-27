@@ -28,10 +28,10 @@ const getUsers = (request, response) => {
   };
 
   // set our error message
-  responseJSON.message = 'getUsers with GET.';
+  responseJSON.message = 'Created Successfully';
 
   // give the error a consistent id
-  responseJSON.id = 'badRequest';
+  responseJSON.id = 'Success';
 
   // return our json with a 200 bad request code
   return respondJSON(request, response, 200, responseJSON);
@@ -44,11 +44,8 @@ const getUsersHead = (request, response) => {
     message: 'getUsers with HEAD.',
   };
 
-  // set our error message
-  response.writeHead(status, { 'Content-Type': 'application/json' });
-
   // give the error a consistent id
-  responseJSON.id = 'badRequest';
+  responseJSON.id = 'Success';
 
   // return our json with a 200 bad request code
   return respondJSONMeta(request, response, 200);
@@ -61,7 +58,7 @@ const notReal = (request, response) => {
     message: 'notReal with GET.',
   };
     // set our error message
-  responseJSON.message = 'notReal with GET.';
+  responseJSON.message = 'The page you were looking for was not found.';
 
   // give the error a consistent id
   responseJSON.id = 'notReal';
@@ -78,7 +75,7 @@ const notRealHead = (request, response) => {
   };
 
   // set our error message
-  responseJSON.message = 'notReal with HEAD.';
+  responseJSON.message = 'Resource not found.';
 
   // give the error a consistent id
   responseJSON.id = 'notRealHead';

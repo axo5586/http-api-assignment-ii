@@ -11,12 +11,6 @@ const jsonHandler = require('./jsonResponses.js');
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
 // key:value object to look up URL routes to specific functions
-const urlStruct = {
-  '/': htmlHandler.getIndex,
-  '/getUsers': jsonHandler.success,
-  '/notReal': jsonHandler.badRequest,
-  notFound: jsonHandler.notFound,
-};
 
 const handlePost = (request, response, parsedUrl) => {
   // handles errors
@@ -45,21 +39,33 @@ const handleGet = (request, response, parsedUrl) => {
   if (parsedUrl.pathname === '/style.css') {
     htmlHandler.getCSS(request, response);
   } else if (parsedUrl.pathname === '/getUsers') {
-    jsonHandler.getUsers(request, response);
+    jsonHandler.getUsers(request, response, parsedUrl);
+  } else if (parsedUrl.pathname === '/getUsersHead') {
+    jsonHandler.getUsersHead(request, response);
+  } else if (parsedUrl.pathname === '/getUsers') {
+    jsonHandler.notReal(request, response);
+  } else if (parsedUrl.pathname === '/getUsers') {
+    jsonHandler.notRealHead(request, response);
   } else {
     htmlHandler.getIndex(request, response);
   }
 };
 
-  // handle HTTP requests. In node the HTTP server will automatically
-  // send this function request and pre-filled response objects.
-  const onRequest = (request, response) => {
+// handle HTTP requests. In node the HTTP server will automatically
+// send this function request and pre-filled response objects.
+const onRequest = (request, response) => {
   // parse the url using the url module
   // This will let us grab any section of the URL by name
   const parsedUrl = url.parse(request.url);
 
   // check if the path name (the /name part of the url) matches
   // any in our url object. If so call that function. If not, default to index.
+  // if (urlStruct[parsedUrl.pathname]) {
+  //   urlStruct[parsedUrl.pathname](request, response);
+  // } else {
+  //   urlStruct.notFound(request, response);
+  // }
+
 
   if (request.method === 'POST') {
     handlePost(request, response, parsedUrl);

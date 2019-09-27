@@ -44,7 +44,7 @@
           content.innerHTML = `<b>Success</b>`;
           break;
         case 201:
-        content.innerHTML = '<b>Created(201)</b>';
+        content.innerHTML = '<b>Create</b>';
           break;
         case 204:
         content.innerHTML = '<b>Updated(No Content 204)</b>';
@@ -108,10 +108,11 @@
 
     const init = () => {
       const nameForm = document.querySelector('#nameForm');
-      
       const addUser = (e) => sendPost(e, nameForm);
-      
-      nameForm.addEventListener('submit', addUser);
+      nameForm.addEventListener('submit1', addUser);
+      const urlField = document.querySelector('#urlField');
+      const url = urlField.options[urlField.selectedIndex].value;
+      sendAjax(url);
     };
 
     window.onload = init;
@@ -127,7 +128,7 @@
         <input id="nameField" type="text" name="name" />
         <label for="age">Age: </label>
         <input id="ageField" type="number" name="age" min="0" max="100" step="1"/>
-        <input type="submit" value="Add User" />
+        <input type="submit1" value="Add User" />
       </form>
       <form id="userForm" action="/getUsers" method="get">
         <select id='urlField'>
