@@ -45,7 +45,7 @@ const getUsersHead = (request, response) => {
   };
 
   // set our error message
-  responseJSON.message = 'getUsers with HEAD.';
+  response.writeHead(status, { 'Content-Type': 'application/json' });
 
   // give the error a consistent id
   responseJSON.id = 'badRequest';

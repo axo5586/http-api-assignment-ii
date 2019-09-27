@@ -66,7 +66,7 @@ const onRequest = (request, response) => {
     urlStruct.notFound(request, response);
   }
 
-  if (request.method === 'post') {
+  if (request.method === 'POST') {
     handlePost(request, response, parsedUrl);
   } else {
     handleGet(request, response, parsedUrl);
