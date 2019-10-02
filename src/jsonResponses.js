@@ -100,6 +100,8 @@ const addUser = (request, response, body) => {
   const responseJSON = {
     message: 'Name and age are both required.',
   };
+  
+  console.dir(body);
 
   if (!body.name || !body.age) {
     responseJSON.id = 'missingParams';
@@ -118,7 +120,7 @@ const addUser = (request, response, body) => {
 
   if (responseCode === 201) {
     responseJSON.message = 'Created Successfully';
-    return responseJSON(request, response, responseCode, responseJSON);
+    return respondJSON(request, response, responseCode, responseJSON);
   }
 
   // catch

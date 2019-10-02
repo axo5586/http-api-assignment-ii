@@ -78,7 +78,7 @@
 
       xhr.onload = () => handleResponse(xhr);
 
-      const formData = `name = ${nameField.value}&age=${ageField.value}`;
+      const formData = `name=${nameField.value}&age=${ageField.value}`;
 
       xhr.send(formData);
       
@@ -88,7 +88,7 @@
 
      
     //function to send ajax
-    const sendAjax = (url) => {
+    const sendAjax = (e, url) => {
       //create a new xhr (ajax) request. 
       //Remember that these are ASYNCHRONOUS
       const xhr = new XMLHttpRequest();
@@ -103,6 +103,9 @@
 
       //send our ajax request to the server
       xhr.send();
+      
+      e.preventDefault();
+      return false;
     };
 
 
@@ -110,9 +113,15 @@
       const nameForm = document.querySelector('#nameForm');
       const addUser = (e) => sendPost(e, nameForm);
       nameForm.addEventListener('submit', addUser);
-      const urlField = document.querySelector('#urlField');
-      const url = urlField.options[urlField.selectedIndex].value;
-      sendAjax(url);
+      
+      const userForm = document.querySelector('#userForm');
+      const handleGet = (e) => {
+        const urlField = document.querySelector('#urlField');
+        const url = urlField.options[urlField.selectedIndex].value;
+        sendAjax(e, url); 
+      };
+      
+      userForm.addEventListener('submit', handleGet);
     };
 
     window.onload = init;

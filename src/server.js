@@ -42,9 +42,9 @@ const handleGet = (request, response, parsedUrl) => {
     jsonHandler.getUsers(request, response, parsedUrl);
   } else if (parsedUrl.pathname === '/getUsersHead') {
     jsonHandler.getUsersHead(request, response);
-  } else if (parsedUrl.pathname === '/getUsers') {
+  } else if (parsedUrl.pathname === '/notReal') {
     jsonHandler.notReal(request, response);
-  } else if (parsedUrl.pathname === '/getUsers') {
+  } else if (parsedUrl.pathname === '/notRealHead') {
     jsonHandler.notRealHead(request, response);
   } else {
     htmlHandler.getIndex(request, response);
